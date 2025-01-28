@@ -7,6 +7,7 @@ contract RegistrarStorage is checkingContract {
     struct UserData {
         address primary;
         mapping(address => bool) isSecondary;
+        address[] secondaries;
         bool exists;
     }
 
@@ -286,7 +287,7 @@ contract RegistrarStorage is checkingContract {
     {
         UserData storage userData = userAddresses[_safleId];
         userData.isSecondary[_secondaryAddress] = true;
-
+        userData.secondaries.push(_secondaryAddress);
         emit SecondaryAddressAdded(_safleId, _secondaryAddress);
         return true;
     }
@@ -303,6 +304,15 @@ contract RegistrarStorage is checkingContract {
     {
         UserData storage userData = userAddresses[_safleId];
         userData.isSecondary[_secondaryAddress] = false;
+
+        // Remove from the secondaries array
+        for (uint i = 0; i < userData.secondaries.length; i++) {
+            if (userData.secondaries[i] == _secondaryAddress) {
+                userData.secondaries[i] = userData.secondaries[userData.secondaries.length - 1];
+                userData.secondaries.pop();
+                break;
+            }
+        }
 
         emit SecondaryAddressRemoved(_safleId, _secondaryAddress);
         return true;
@@ -338,22 +348,12 @@ contract RegistrarStorage is checkingContract {
         view
         returns (address[] memory)
     {
-        UserData storage userData = userAddresses[_safleId];
-        address[] memory secondaries = new address[](0);
-        // Iterate over the mapping to find all secondary addresses
-        // Note: This is not efficient for large mappings, consider using an array in the struct if needed.
-        for (uint i = 0; i < registeredSafleIds.length; i++) {
-            if (userData.isSecondary[address(uint160(uint256(keccak256(bytes(registeredSafleIds[i])))))]) {
-                secondaries[i] = address(uint160(uint256(keccak256(bytes(registeredSafleIds[i])))));
-            }
-        }
-        return secondaries;
+        return userAddresses[_safleId].secondaries; // Directly return the secondaries array
     }
 
     function getRegisteredSafleIds() external view returns (string[] memory) {
         return registeredSafleIds;
     }
 
-    // Internal function to check if an address is a contract
    
 }

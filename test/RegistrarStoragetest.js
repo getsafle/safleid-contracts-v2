@@ -99,7 +99,13 @@ contract("RegistrarStorage", (accounts) => {
     );
     assert.equal(isSecondary, true, "Secondary address not added");
   });
+  it("Get Secondary address", async () => {
+    const safleId = "safleId1";
 
+    const secondaries = await registrarStorage.getSecondaryAddresses(safleId);
+
+    assert.equal(secondaries.includes(accounts[3]), true, "Secondary address");
+  });
   it("should remove a secondary address", async () => {
     const safleId = "safleId1";
     const primaryAddress = accounts[2];
