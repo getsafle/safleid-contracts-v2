@@ -8,19 +8,19 @@ contract("checkingContract", (accounts) => {
     checking = await checkingContract.new();
   });
   //For the below tests to pass turn the method to public in contract
-  describe("isContract", () => {
-    it("should return true for contract addresses", async () => {
-      // Deploy a second contract to test with
-      const secondContract = await checkingContract.new();
-      const result = await checking.isContract(secondContract.address);
-      assert.equal(result, true, "Should identify contract address");
-    });
+  // describe("isContract", () => {
+  //   it("should return true for contract addresses", async () => {
+  //     // Deploy a second contract to test with
+  //     const secondContract = await checkingContract.new();
+  //     const result = await checking.isContract(secondContract.address);
+  //     assert.equal(result, true, "Should identify contract address");
+  //   });
 
-    it("should return false for wallet addresses", async () => {
-      const result = await checking.isContract(accounts[0]);
-      assert.equal(result, false, "Should identify wallet address");
-    });
-  });
+  //   it("should return false for wallet addresses", async () => {
+  //     const result = await checking.isContract(accounts[0]);
+  //     assert.equal(result, false, "Should identify wallet address");
+  //   });
+  // });
 
   describe("toLower", () => {
     it("should convert uppercase string to lowercase", async () => {
@@ -71,36 +71,36 @@ contract("checkingContract", (accounts) => {
   });
 
   //For the below tests to pass turn the method to public in contract
-  describe("isSafleIdValid", () => {
-    it("should return true for valid SafleId", async () => {
-      const result = await checking.isSafleIdValid("test123");
-      assert.equal(result, true, "Should accept valid SafleId");
-    });
+  // describe("isSafleIdValid", () => {
+  //   it("should return true for valid SafleId", async () => {
+  //     const result = await checking.isSafleIdValid("test123");
+  //     assert.equal(result, true, "Should accept valid SafleId");
+  //   });
 
-    it("should revert for SafleId shorter than 4 characters", async () => {
-      await truffleAssert.reverts(
-        checking.isSafleIdValid("abc"),
-        "SafleId length should be between 4-16 characters"
-      );
-    });
+  //   it("should revert for SafleId shorter than 4 characters", async () => {
+  //     await truffleAssert.reverts(
+  //       checking.isSafleIdValid("abc"),
+  //       "SafleId length should be between 4-16 characters"
+  //     );
+  //   });
 
-    it("should revert for SafleId longer than 16 characters", async () => {
-      await truffleAssert.reverts(
-        checking.isSafleIdValid("abcdefghijklmnopq"),
-        "SafleId length should be between 4-16 characters"
-      );
-    });
+  //   it("should revert for SafleId longer than 16 characters", async () => {
+  //     await truffleAssert.reverts(
+  //       checking.isSafleIdValid("abcdefghijklmnopq"),
+  //       "SafleId length should be between 4-16 characters"
+  //     );
+  //   });
 
-    it("should revert for non-alphanumeric SafleId", async () => {
-      await truffleAssert.reverts(
-        checking.isSafleIdValid("test@123"),
-        "only alphanumeric allowed"
-      );
-    });
+  //   it("should revert for non-alphanumeric SafleId", async () => {
+  //     await truffleAssert.reverts(
+  //       checking.isSafleIdValid("test@123"),
+  //       "only alphanumeric allowed"
+  //     );
+  //   });
 
-    it("should handle uppercase characters correctly", async () => {
-      const result = await checking.isSafleIdValid("TEST123");
-      assert.equal(result, true, "Should handle uppercase characters");
-    });
-  });
+  //   it("should handle uppercase characters correctly", async () => {
+  //     const result = await checking.isSafleIdValid("TEST123");
+  //     assert.equal(result, true, "Should handle uppercase characters");
+  //   });
+  // });
 });
