@@ -78,21 +78,41 @@ contract("RegistrarStorage", (accounts) => {
     const primaryAddress = accounts[2];
     const secondaryAddress = accounts[3];
     const operation = "addSecondaryAddress";
-    const message = web3.utils.soliditySha3(
+
+    // Message for primary address signature
+    const primaryMessage = web3.utils.soliditySha3(
       web3.utils.toHex(operation),
       web3.utils.toHex(safleId),
       primaryAddress
     );
 
+    // Message for secondary address signature
+    const secondaryMessage = web3.utils.soliditySha3(
+      web3.utils.toHex(operation),
+      web3.utils.toHex(safleId),
+      secondaryAddress
+    );
+
+    // Generate signatures
+    const primarySignature = await web3.eth.sign(
+      primaryMessage,
+      primaryAddress
+    );
+    const secondarySignature = await web3.eth.sign(
+      secondaryMessage,
+      secondaryAddress
+    );
+
     // Add secondary address
-    const addSignature = await web3.eth.sign(message, primaryAddress);
     await registrarStorage.addSecondaryAddress(
       safleId,
       secondaryAddress,
-      addSignature,
+      primarySignature,
+      secondarySignature,
       { from: primaryAddress }
     );
 
+    // Verify the secondary address was added
     const isSecondary = await registrarStorage.isSecondaryAddress(
       safleId,
       secondaryAddress

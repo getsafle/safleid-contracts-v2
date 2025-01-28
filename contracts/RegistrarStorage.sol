@@ -278,13 +278,18 @@ contract RegistrarStorage is checkingContract {
     function addSecondaryAddress(
         string calldata _safleId,
         address _secondaryAddress,
-        bytes calldata _signature
+        bytes calldata _primarySignature,
+        bytes calldata _secondarySignature
     )
         external
         safleIdExists(_safleId)
-        verifyRegistrarOrUserSignature(_safleId, userAddresses[_safleId].primary, _signature, "addSecondaryAddress")
+        verifyRegistrarOrUserSignature(_safleId, userAddresses[_safleId].primary, _primarySignature, "addSecondaryAddress")
         returns (bool)
     {
+        require(
+            verifySignature(abi.encodePacked("addSecondaryAddress", _safleId, _secondaryAddress), _secondaryAddress, _secondarySignature),
+            "Invalid secondary address signature"
+        );
         UserData storage userData = userAddresses[_safleId];
         userData.isSecondary[_secondaryAddress] = true;
         userData.secondaries.push(_secondaryAddress);
