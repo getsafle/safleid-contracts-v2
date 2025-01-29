@@ -97,19 +97,14 @@ contract RegistrarStorage is checkingContract {
     }
 
     // Signature verification modifiers
-    modifier verifyRegistrarOrUserSignature(
+    modifier verifyPrimarySignature(
         string memory _safleId,
         address _primaryAddress,
         bytes memory _signature,
         string memory _operation
     ) {
         bytes memory data = abi.encodePacked(_operation, _safleId, _primaryAddress);
-        if (isRegisteredRegistrar[msg.sender]) {
-            require(verifySignature(data, msg.sender, _signature), "Invalid registrar signature");
-        } else {
-            require(msg.sender == _primaryAddress, "Caller must be primary address");
-            require(verifySignature(data, _primaryAddress, _signature), "Invalid user signature");
-        }
+        require(verifySignature(data, _primaryAddress, _signature), "Invalid user signature");
         _;
     }
 
@@ -241,6 +236,8 @@ contract RegistrarStorage is checkingContract {
         external
         returns (bool)
     {
+
+        require(isRegisteredRegistrar[msg.sender] == true, "Caller must be a Registrar");
         // Inline modifier logic
         require(!userAddresses[_safleId].exists, "SafleID already exists");
         require(!unavailableSafleIds[_safleId], "SafleID not available");
@@ -250,15 +247,11 @@ contract RegistrarStorage is checkingContract {
         require(registrarNameToAddress[string(bytes(_safleId))] == address(0x0), "This SafleId is taken by a Registrar.");
         require(resolveAddressFromSafleId[bytes(_safleId)] == address(0x0), "This SafleId is already registered.");
         require(unavailableSafleIds[_safleId] == false, "SafleId is already used once, not available now");
-
-        // Inline verifyRegistrarOrUserSignature logic
+        
+        // Inline verifyPrimarySignature logic
         bytes memory data = abi.encodePacked("registerSafleId", _safleId, _primaryAddress);
-        if (isRegisteredRegistrar[msg.sender]) {
-            require(verifySignature(data, msg.sender, _signature), "Invalid registrar signature");
-        } else {
-            require(msg.sender == _primaryAddress, "Caller must be primary address");
-            require(verifySignature(data, _primaryAddress, _signature), "Invalid user signature");
-        }
+        require(verifySignature(data, msg.sender, _signature), "Invalid registrar signature");
+  
 
         // Function logic
         UserData storage userData = userAddresses[_safleId];
@@ -283,7 +276,7 @@ contract RegistrarStorage is checkingContract {
     )
         external
         safleIdExists(_safleId)
-        verifyRegistrarOrUserSignature(_safleId, userAddresses[_safleId].primary, _primarySignature, "addSecondaryAddress")
+        verifyPrimarySignature(_safleId, userAddresses[_safleId].primary, _primarySignature, "addSecondaryAddress")
         returns (bool)
     {
         require(
@@ -304,7 +297,7 @@ contract RegistrarStorage is checkingContract {
     )
         external
         safleIdExists(_safleId)
-        verifyRegistrarOrUserSignature(_safleId, userAddresses[_safleId].primary, _signature, "removeSecondaryAddress")
+        verifyPrimarySignature(_safleId, userAddresses[_safleId].primary, _signature, "removeSecondaryAddress")
         returns (bool)
     {
         UserData storage userData = userAddresses[_safleId];

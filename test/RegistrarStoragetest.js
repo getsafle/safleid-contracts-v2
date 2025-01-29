@@ -109,7 +109,7 @@ contract("RegistrarStorage", (accounts) => {
       secondaryAddress,
       primarySignature,
       secondarySignature,
-      { from: primaryAddress }
+      { from: registrar }
     );
 
     // Verify the secondary address was added
@@ -143,7 +143,7 @@ contract("RegistrarStorage", (accounts) => {
       safleId,
       secondaryAddress,
       removeSignature,
-      { from: primaryAddress }
+      { from: registrar }
     );
 
     const isSecondary = await registrarStorage.isSecondaryAddress(
