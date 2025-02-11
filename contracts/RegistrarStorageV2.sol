@@ -5,7 +5,7 @@ import "./checkingContract.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContract {
+contract RegistrarStorageV2 is  UUPSUpgradeable ,OwnableUpgradeable, checkingContract {
     
     struct UserData {
         address primary;
@@ -65,7 +65,7 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
     event RegistrarUpdated(address indexed registrar, string oldName, string newName);
 
     string constant PREFIX = "\x19Ethereum Signed Message:\n32";
-    
+    uint256 public extra;
     // Modifiers
 
 
