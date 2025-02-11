@@ -20,6 +20,41 @@
       "address": "0xe800175d6A35cF9413cbFBc43188BD925217c965",
       "txHash": "0x7977f1434cbfa339febca5ccd98cd84146886e028172abce6c434e32ee5f3a38",
       "kind": "uups"
+    },
+    {
+      "address": "0x21c78e618e22879625E0610f41Db7ff3dfC103ae",
+      "txHash": "0xf38d89cf7e9d7c8657ade82bfa0229f4306512b0cd80ae8070da3f5c748a90a8",
+      "kind": "uups"
+    },
+    {
+      "address": "0x7512E6bC0AF7389Fd2Ea535c5D5de522477A677c",
+      "txHash": "0x29b84897c1facd80b444270db29e45620cce79100ec41b5afc1314f09620beb3",
+      "kind": "uups"
+    },
+    {
+      "address": "0x625Fe813DF9d01747D2886036119Ca0A5ddBb0D3",
+      "txHash": "0x3c64ba7313b5303f7e6591bb0462857f5868ea34ca85b1cf6f23898df6d5a5f7",
+      "kind": "uups"
+    },
+    {
+      "address": "0x853BdC06B6394D0C7963555bBA0DD5436Eca4dD9",
+      "txHash": "0x42e49cfdf0ff9cde07c93f25d2aa0020cda107681bdcb31ee105c8c20a081e19",
+      "kind": "uups"
+    },
+    {
+      "address": "0x81C685F48726DeD6DbC614914C5b737C79A6A5ff",
+      "txHash": "0x7c1e7e95094fcc685234141b44bb398ce282676bfc7ee6f499972fb7fc2d212f",
+      "kind": "uups"
+    },
+    {
+      "address": "0x93eC0b15955b255F2Af174015a43eEBA14a33502",
+      "txHash": "0x229e9f53ab2789bdc165f11429e34664b3d25342a7bd340af2c0de25c57e6267",
+      "kind": "uups"
+    },
+    {
+      "address": "0xc2f3ef3448B71A446AeC646b945eCe4E6dDE8699",
+      "txHash": "0x93d7e805757788f4d6bbd1a8e6bbbe15a61469fd59600cded4aedaef675c12b3",
+      "kind": "uups"
     }
   ],
   "impls": {
@@ -309,6 +344,572 @@
     "daa3835d3a807c9627a02434540de7134f163508903b9b59f881634ca94efe48": {
       "address": "0xc6856C756548aa61a1E2F5f96F78da6893F1cfF6",
       "txHash": "0x663d5609afb6a32c454157491b10d9d8e6504203d2e24a105d5f5a2c84141ac9",
+      "layout": {
+        "solcVersion": "0.8.28",
+        "storage": [
+          {
+            "contract": "RegistrarStorage",
+            "label": "registrarFees",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:29"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "safleIdFees",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:30"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "contractOwner",
+            "type": "t_address",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:31"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "walletAddress",
+            "type": "t_address_payable",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:32"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "MAX_NAME_UPDATES",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:33"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "safleIdRegStatus",
+            "type": "t_bool",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:34"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "isPaused",
+            "type": "t_bool",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:35"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalRegistrars",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:37"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalSafleIdRegistered",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:38"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "isRegisteredRegistrar",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:41"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "registrarNames",
+            "type": "t_mapping(t_address,t_string_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:42"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "registrarNameToAddress",
+            "type": "t_mapping(t_string_memory_ptr,t_address)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:43"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalRegistrarUpdates",
+            "type": "t_mapping(t_address,t_uint8)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:44"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalRegistrarNameUpdates",
+            "type": "t_mapping(t_address,t_uint8)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:45"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalSafleIDCount",
+            "type": "t_mapping(t_address,t_uint8)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:46"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveOldRegistrarAddress",
+            "type": "t_mapping(t_address,t_array(t_bytes_storage)dyn_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:47"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "Registrars",
+            "type": "t_mapping(t_address,t_struct(Registrar)1447_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:48"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "userAddresses",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(UserData)1440_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:51"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "unavailableSafleIds",
+            "type": "t_mapping(t_string_memory_ptr,t_bool)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:52"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "registeredSafleIds",
+            "type": "t_array(t_string_storage)dyn_storage",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:53"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveAddressFromSafleId",
+            "type": "t_mapping(t_bytes_memory_ptr,t_address)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:56"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "isAddressTaken",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:57"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveUserAddress",
+            "type": "t_mapping(t_address,t_string_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:58"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveOldSafleIdFromAddress",
+            "type": "t_mapping(t_address,t_array(t_bytes_storage)dyn_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:59"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveOldSafleID",
+            "type": "t_mapping(t_bytes_memory_ptr,t_address)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:60"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_mapping(t_address,t_string_storage)": {
+            "label": "mapping(address => string)"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_mapping(t_string_memory_ptr,t_address)": {
+            "label": "mapping(string => address)"
+          },
+          "t_mapping(t_address,t_uint8)": {
+            "label": "mapping(address => uint8)"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_mapping(t_address,t_array(t_bytes_storage)dyn_storage)": {
+            "label": "mapping(address => bytes[])"
+          },
+          "t_array(t_bytes_storage)dyn_storage": {
+            "label": "bytes[]"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          },
+          "t_mapping(t_address,t_struct(Registrar)1447_storage)": {
+            "label": "mapping(address => struct RegistrarStorage.Registrar)"
+          },
+          "t_struct(Registrar)1447_storage": {
+            "label": "struct RegistrarStorage.Registrar",
+            "members": [
+              {
+                "label": "isRegisteredRegistrar",
+                "type": "t_bool"
+              },
+              {
+                "label": "registrarName",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "registrarAddress",
+                "type": "t_address"
+              }
+            ]
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(UserData)1440_storage)": {
+            "label": "mapping(string => struct RegistrarStorage.UserData)"
+          },
+          "t_struct(UserData)1440_storage": {
+            "label": "struct RegistrarStorage.UserData",
+            "members": [
+              {
+                "label": "primary",
+                "type": "t_address"
+              },
+              {
+                "label": "isSecondary",
+                "type": "t_mapping(t_address,t_bool)"
+              },
+              {
+                "label": "secondaries",
+                "type": "t_array(t_address)dyn_storage"
+              },
+              {
+                "label": "exists",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]"
+          },
+          "t_mapping(t_string_memory_ptr,t_bool)": {
+            "label": "mapping(string => bool)"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_address)": {
+            "label": "mapping(bytes => address)"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "..\\@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "..\\@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "..\\@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    },
+    "86d6983cdee76cc37ad2fa13f546d271d1ce86ca4e81fdc1b4f11ab65d0833fe": {
+      "address": "0x9087091E8032675A92727A3789cC18B1c79C28B2",
+      "txHash": "0x4e8625317c585fd5656a9ec2368e65b2fd239a353fa03b122b8a0b82a33325c4",
+      "layout": {
+        "solcVersion": "0.8.28",
+        "storage": [
+          {
+            "contract": "RegistrarStorage",
+            "label": "registrarFees",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:29"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "safleIdFees",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:30"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "contractOwner",
+            "type": "t_address",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:31"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "walletAddress",
+            "type": "t_address_payable",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:32"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "MAX_NAME_UPDATES",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:33"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "safleIdRegStatus",
+            "type": "t_bool",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:34"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "isPaused",
+            "type": "t_bool",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:35"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalRegistrars",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:37"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalSafleIdRegistered",
+            "type": "t_uint256",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:38"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "isRegisteredRegistrar",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:41"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "registrarNames",
+            "type": "t_mapping(t_address,t_string_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:42"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "registrarNameToAddress",
+            "type": "t_mapping(t_string_memory_ptr,t_address)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:43"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalRegistrarUpdates",
+            "type": "t_mapping(t_address,t_uint8)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:44"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalRegistrarNameUpdates",
+            "type": "t_mapping(t_address,t_uint8)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:45"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "totalSafleIDCount",
+            "type": "t_mapping(t_address,t_uint8)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:46"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveOldRegistrarAddress",
+            "type": "t_mapping(t_address,t_array(t_bytes_storage)dyn_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:47"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "Registrars",
+            "type": "t_mapping(t_address,t_struct(Registrar)1447_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:48"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "userAddresses",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(UserData)1440_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:51"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "unavailableSafleIds",
+            "type": "t_mapping(t_string_memory_ptr,t_bool)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:52"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "registeredSafleIds",
+            "type": "t_array(t_string_storage)dyn_storage",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:53"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveAddressFromSafleId",
+            "type": "t_mapping(t_bytes_memory_ptr,t_address)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:56"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "isAddressTaken",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:57"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveUserAddress",
+            "type": "t_mapping(t_address,t_string_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:58"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveOldSafleIdFromAddress",
+            "type": "t_mapping(t_address,t_array(t_bytes_storage)dyn_storage)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:59"
+          },
+          {
+            "contract": "RegistrarStorage",
+            "label": "resolveOldSafleID",
+            "type": "t_mapping(t_bytes_memory_ptr,t_address)",
+            "src": "..\\project:\\contracts\\RegistrarStorage.sol:60"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_mapping(t_address,t_string_storage)": {
+            "label": "mapping(address => string)"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_mapping(t_string_memory_ptr,t_address)": {
+            "label": "mapping(string => address)"
+          },
+          "t_mapping(t_address,t_uint8)": {
+            "label": "mapping(address => uint8)"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_mapping(t_address,t_array(t_bytes_storage)dyn_storage)": {
+            "label": "mapping(address => bytes[])"
+          },
+          "t_array(t_bytes_storage)dyn_storage": {
+            "label": "bytes[]"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          },
+          "t_mapping(t_address,t_struct(Registrar)1447_storage)": {
+            "label": "mapping(address => struct RegistrarStorage.Registrar)"
+          },
+          "t_struct(Registrar)1447_storage": {
+            "label": "struct RegistrarStorage.Registrar",
+            "members": [
+              {
+                "label": "isRegisteredRegistrar",
+                "type": "t_bool"
+              },
+              {
+                "label": "registrarName",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "registrarAddress",
+                "type": "t_address"
+              }
+            ]
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(UserData)1440_storage)": {
+            "label": "mapping(string => struct RegistrarStorage.UserData)"
+          },
+          "t_struct(UserData)1440_storage": {
+            "label": "struct RegistrarStorage.UserData",
+            "members": [
+              {
+                "label": "primary",
+                "type": "t_address"
+              },
+              {
+                "label": "isSecondary",
+                "type": "t_mapping(t_address,t_bool)"
+              },
+              {
+                "label": "secondaries",
+                "type": "t_array(t_address)dyn_storage"
+              },
+              {
+                "label": "exists",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]"
+          },
+          "t_mapping(t_string_memory_ptr,t_bool)": {
+            "label": "mapping(string => bool)"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_address)": {
+            "label": "mapping(bytes => address)"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "..\\@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "..\\@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "..\\@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    },
+    "5281c22c9c57e251b7f6bffcf18bc2a468ae119e0392135b41a3fea5f500d384": {
+      "address": "0xc3c1BBf93a324Fd00c18B256fCE77Bf56693CEE5",
+      "txHash": "0x35be0bd944c0cc7b0fc6ef1f44e58d9737da423d4c2607ecdab0da1a6bab0b29",
       "layout": {
         "solcVersion": "0.8.28",
         "storage": [

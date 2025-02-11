@@ -164,22 +164,22 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
     }
 
     // Owner functions for chain management
-    function setSafleIdFees(uint256 _amount) public onlyOwner {
+    function setSafleIdFees(uint256 _amount) public WhenNotPaused onlyOwner {
         require(_amount >= 0, "Please set a fee for SafleID registration.");
         safleIdFees = _amount;
     }
 
-    function setRegistrarFees(uint256 _amount) public onlyOwner {
+    function setRegistrarFees(uint256 _amount) public WhenNotPaused onlyOwner {
         require(_amount >= 0, "Please set a fee for Registrar registration.");
         registrarFees = _amount;
     }
 
-    function updateWalletAddress(address payable _walletAddress) public onlyOwner {
+    function updateWalletAddress(address payable _walletAddress) public WhenNotPaused onlyOwner {
         require(!isContract(_walletAddress), "Wallet address cannot be a contract");
         walletAddress = _walletAddress;
     }
 
-    function toggleRegistrationStatus() external onlyOwner returns (bool) {
+    function toggleRegistrationStatus() external WhenNotPaused onlyOwner returns (bool) {
         safleIdRegStatus = !safleIdRegStatus;
         return true;
     }
@@ -187,6 +187,7 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
     // Registrar registration and update functions
     function registerRegistrar(address _registrar, string calldata _registrarName)
         external
+        WhenNotPaused
         registrarChecks(_registrarName)
         onlyOwner
         returns (bool)
@@ -212,6 +213,7 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
 
     function updateRegistrar(address _registrar, string calldata _newRegistrarName)
         external
+        WhenNotPaused
         registrarChecks(_newRegistrarName)
         returns (bool)
     {
@@ -290,7 +292,9 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
         bytes calldata _secondarySignature
     )
         external
+        WhenNotPaused
         safleIdExists(_safleId)
+
         verifyPrimarySignature(_safleId, userAddresses[_safleId].primary, _primarySignature, "addSecondaryAddress")
         returns (bool)
     {
@@ -311,7 +315,9 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
         bytes calldata _signature
     )
         external
+        WhenNotPaused
         safleIdExists(_safleId)
+        
         verifyPrimarySignature(_safleId, userAddresses[_safleId].primary, _signature, "removeSecondaryAddress")
         returns (bool)
     {
