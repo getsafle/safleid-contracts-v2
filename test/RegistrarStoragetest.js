@@ -43,6 +43,14 @@ contract("RegistrarStorage", (accounts) => {
     assert.equal(isRegistered, true, "Registrar not registered");
   });
 
+  it("Pause Contract", async () => {
+    const result = await registrarStorage.PauseRegistration({ from: owner });
+  });
+
+  it("unPause Contract", async () => {
+    const result = await registrarStorage.unPauseRegistration({ from: owner });
+  });
+
   it("should register a SafleId", async () => {
     const safleId = "safleId1";
     const primaryAddress = accounts[2];
@@ -186,29 +194,5 @@ contract("RegistrarStorage", (accounts) => {
       newRegistrarName,
       "Event newName mismatch"
     );
-  });
-  it("should upgrade the contract to V2", async () => {
-    // Deploy the new version of the contract
-    try {
-      const registrarStorageV2 = await upgradeProxy(
-        registrarStorage.address,
-        RegistrarStorageV2
-      );
-    } catch (error) {
-      console.log(error);
-    }
-
-    // Verify that the contract is upgraded and the state is preserved
-    const safleIdFees = await registrarStorageV2.safleIdFees();
-    assert.equal(
-      safleIdFees.toString(),
-      web3.utils.toWei("1", "ether"),
-      "State not preserved after upgrade"
-    );
-
-    // Test new functionality in V2 (if any)
-    // Example: Assume V2 adds a new function `getVersion()`
-    const version = await registrarStorageV2.getVersion();
-    assert.equal(version, "V2", "Upgrade to V2 failed");
   });
 });

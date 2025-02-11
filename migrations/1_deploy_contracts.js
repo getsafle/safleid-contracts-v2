@@ -8,7 +8,4 @@ module.exports = async function (deployer) {
     deployer,
     initializer: "initialize",
   });
-  await upgradeProxy(registrarStorage.address, RegistrarStorageV2, {
-    deployer,
-  });
 };

@@ -32,6 +32,7 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
     address payable public walletAddress;
     uint256 public MAX_NAME_UPDATES ;
     bool public safleIdRegStatus;
+    bool public isPaused;
 
     uint256 public totalRegistrars;
     uint256 public totalSafleIdRegistered;
@@ -71,6 +72,11 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
 
     modifier safleIdExists(string memory _safleId) {
         require(userAddresses[_safleId].exists, "SafleID does not exist");
+        _;
+    }
+
+    modifier WhenNotPaused(){
+        require(isPaused==false, "Contract is Paused");
         _;
     }
 
@@ -228,6 +234,12 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
         return true;
     }
 
+    function PauseRegistration() external onlyOwner {
+        isPaused=true;
+    }
+    function unPauseRegistration() external onlyOwner {
+        isPaused=false;
+    }
     // SafleID registration and management functions
     function registerSafleId(
         string calldata _safleId,
@@ -236,6 +248,7 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
         bytes calldata _signature
     )
         external
+        WhenNotPaused
         returns (bool)
     {
 
