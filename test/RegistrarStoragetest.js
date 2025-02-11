@@ -13,6 +13,14 @@ contract("RegistrarStorage", (accounts) => {
     registrarStorage = await RegistrarStorage.deployed();
   });
 
+  it("Pause Contract", async () => {
+    const result = await registrarStorage.PauseRegistration({ from: owner });
+  });
+
+  it("unPause Contract", async () => {
+    const result = await registrarStorage.unPauseRegistration({ from: owner });
+  });
+
   it("should set SafleId fees", async () => {
     const feeAmount = web3.utils.toWei("1", "ether");
     await registrarStorage.setSafleIdFees(feeAmount, { from: owner });
@@ -41,14 +49,6 @@ contract("RegistrarStorage", (accounts) => {
       registrar
     );
     assert.equal(isRegistered, true, "Registrar not registered");
-  });
-
-  it("Pause Contract", async () => {
-    const result = await registrarStorage.PauseRegistration({ from: owner });
-  });
-
-  it("unPause Contract", async () => {
-    const result = await registrarStorage.unPauseRegistration({ from: owner });
   });
 
   it("should register a SafleId", async () => {

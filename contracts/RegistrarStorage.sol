@@ -64,6 +64,9 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
     event SecondaryAddressRemoved(string indexed safleId, address secondary);
     event RegistrarRegistered(address indexed registrar, string registrarName);
     event RegistrarUpdated(address indexed registrar, string oldName, string newName);
+    event RegistrationPaused(address indexed by);
+    event RegistrationUnpaused(address indexed by);    
+
 
     string constant PREFIX = "\x19Ethereum Signed Message:\n32";
     
@@ -237,10 +240,13 @@ contract RegistrarStorage is  UUPSUpgradeable ,OwnableUpgradeable, checkingContr
     }
 
     function PauseRegistration() external onlyOwner {
-        isPaused=true;
+        isPaused = true;
+        emit RegistrationPaused(msg.sender);
     }
+
     function unPauseRegistration() external onlyOwner {
-        isPaused=false;
+        isPaused = false;
+        emit RegistrationUnpaused(msg.sender);
     }
     // SafleID registration and management functions
     function registerSafleId(
